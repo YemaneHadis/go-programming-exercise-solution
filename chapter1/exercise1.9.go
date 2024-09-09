@@ -1,3 +1,5 @@
+// modify fetch to add prefix http:// if there is no one
+
 package main
 
 import (
@@ -5,11 +7,16 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"strings"
 )
 
 func main() {
 
 	for _, url := range os.Args[1:] {
+
+		if !strings.HasPrefix("http://", url) {
+			url = "http://" + url
+		}
 		resp, err := http.Get(url)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "fetch %v\n", err)
@@ -17,6 +24,7 @@ func main() {
 		}
 		b, err := io.Copy(os.Stdout, resp.Body)
 		resp.Body.Close()
+		fmt.Printf("HTTP status code %d\n", resp.StatusCode)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "fetch : reading %s : %v\n", url, err)
 			os.Exit(1)
