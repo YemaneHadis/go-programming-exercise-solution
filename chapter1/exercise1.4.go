@@ -1,3 +1,5 @@
+// modiy dup2 to print the names of all files in which each duplicate
+// line occurs
 package main
 
 import (
