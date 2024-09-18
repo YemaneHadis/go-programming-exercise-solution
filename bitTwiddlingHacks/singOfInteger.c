@@ -1,18 +1,15 @@
 #include<stdio.h>
-int main(int argc, char const *argv[])
-{
+#include<stdbool.h>
+
+int sing (int u, int v){
     int sing1;
     int sing2;
 
-    int u = 12;
-    int v = -11;
+    sing1 = u >> (sizeof(int) * __CHAR_BIT__-1);
+    sing2 = v >> (sizeof(int) * __CHAR_BIT__-1);
 
-     sing1 = u >> (sizeof(int) * __CHAR_BIT__-1);
-     sing2 = v >> (sizeof(int) * __CHAR_BIT__-1);
-
-     printf("Sing of U\t%d\n", sing1);
-     printf("Sing of V\t%d\n", sing2);
-     printf("%lu", sizeof(int));
+    printf("Sing of U\t%d\n", sing1);
+    printf("Sing of V\t%d\n", sing2);
 
     /* 
     - HOW WE ARE GETTING THE SING OF AN INTEGER 
@@ -28,6 +25,23 @@ int main(int argc, char const *argv[])
      */
 
 
+    return 0;
+}
 
+int checkSameSign(int u, int v){
+    bool f = ((u^v)<0);
+    printf("%d and %d have the different sing evaluated to %s\n",u,v,f?"True":"False");
+    return 0;
+
+    /*
+        if they have different sing the left most bit will be different and this will be 
+        evaluated to 1 with xor so the decimal representation of the number will be less than zero
+    */
+}
+int main(int argc, char const *argv[])
+{
+    sing(12,-11);
+    checkSameSign(12,11);
+    checkSameSign(12,-12);
     return 0;
 }
