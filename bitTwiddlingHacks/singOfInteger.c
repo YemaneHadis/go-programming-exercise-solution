@@ -1,6 +1,17 @@
 #include<stdio.h>
 #include<stdbool.h>
 
+
+int abs(int u){
+    /**
+     *  If u is +ve number then mask will be 0 u xor mask will be resulted to u
+     *  If u is -ve number then mask will be -1 then (u-1) xor -1 will be resulted to abs(u)
+     * 
+     */
+    unsigned int r;
+    int const mask = u >> sizeof(int) * __CHAR_BIT__-1;
+    r = (u-mask) ^ mask;
+}
 int sing (int u, int v){
     int sing1;
     int sing2;
