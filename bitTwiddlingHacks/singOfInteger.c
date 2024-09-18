@@ -30,17 +30,6 @@ int countSetBits2(int u){
     return 0;
 }
 
-//Sign extending from a variable bit-width
-int singExtending(){
-    unsigned int b;
-    int x;
-    int y;
-    int const m = 1U <<(b-1) ;//mask can be precomputed if b is fixed
-    //x = x &   
-    return 0;
-}
-
-
 int isPowOfTwo(unsigned int u){
     
     bool isPowerOfTwo = (u&(u-1)) == 0;
