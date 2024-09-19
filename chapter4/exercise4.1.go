@@ -35,8 +35,3 @@ func main() {
 	fmt.Printf("%x\n", h1)
 	fmt.Printf("Number of different bits between sha256 representation of %s %s are %d\n", s1, s2, DifferentBits(&h1, &h2))
 }
-
-// count the number of bits set in x
-
-// TODO READ THE FOLLOWING ARTICLE ABOUT BIT MANIPULATION
-//https://graphics.stanford.edu/~seander/bithacks.html
